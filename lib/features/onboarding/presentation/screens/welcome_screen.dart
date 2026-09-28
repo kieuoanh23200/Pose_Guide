@@ -9,7 +9,6 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('==== [DEBUG] WelcomeScreen build() called ====');
     // Ensure transparent status bar with light icons
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
@@ -70,25 +69,39 @@ class WelcomeScreen extends StatelessWidget {
           // 3. Main Content Layer
           // -------------------------------------------------------------------
           SafeArea(
-            child: Column(
-              children: [
-                const SizedBox(height: AppDimensions.p16),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                  physics: const ClampingScrollPhysics(),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: constraints.maxHeight,
+                    ),
+                    child: IntrinsicHeight(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: AppDimensions.p12),
 
-                // Top Branding Badges
-                _buildTopBadges(),
+                          // Top Branding Badges
+                          _buildTopBadges(),
 
-                const Spacer(),
+                          const Spacer(),
 
-                // Bottom Floating Glassmorphic Card
-                _buildBottomCard(context),
+                          // Bottom Floating Glassmorphic Card
+                          _buildBottomCard(context),
 
-                const SizedBox(height: AppDimensions.p8),
+                          const SizedBox(height: AppDimensions.p6),
 
-                // Home indicator bar
-                _buildHomeIndicator(),
+                          // Home indicator bar
+                          _buildHomeIndicator(),
 
-                const SizedBox(height: AppDimensions.p6),
-              ],
+                          const SizedBox(height: AppDimensions.p6),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ],
@@ -191,10 +204,10 @@ class WelcomeScreen extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 16, sigmaY: 16),
           child: Container(
             padding: const EdgeInsets.fromLTRB(
-              AppDimensions.p22,
-              AppDimensions.p24,
-              AppDimensions.p22,
               AppDimensions.p20,
+              AppDimensions.p18,
+              AppDimensions.p20,
+              AppDimensions.p14,
             ),
             decoration: BoxDecoration(
               gradient: AppColors.darkCardGradient,
@@ -227,7 +240,7 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
 
-                const SizedBox(height: AppDimensions.p10),
+                const SizedBox(height: AppDimensions.p8),
 
                 // Description Subtitle
                 const Text(
@@ -235,7 +248,7 @@ class WelcomeScreen extends StatelessWidget {
                   style: AppTextStyles.darkDescription,
                 ),
 
-                const SizedBox(height: AppDimensions.p20),
+                const SizedBox(height: AppDimensions.p14),
 
                 // 3 Highlights Stats (500+ Tư thế | AR Góc chụp | 4.9 Đánh giá)
                 Row(
@@ -251,8 +264,8 @@ class WelcomeScreen extends StatelessWidget {
                           SizedBox(width: AppDimensions.p2),
                           Icon(
                             Icons.arrow_downward_rounded,
-                            size: 13,
-                            color: Colors.white70,
+                            size: AppDimensions.iconXs,
+                            color: AppColors.textWhiteSecondary,
                           ),
                         ],
                       ),
@@ -265,10 +278,10 @@ class WelcomeScreen extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.view_in_ar_rounded,
-                            size: 15,
+                            size: AppDimensions.iconSm,
                             color: AppColors.primaryMint,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: AppDimensions.p2),
                           Text(
                             'AR',
                             style: AppTextStyles.statArHighlight,
@@ -286,7 +299,7 @@ class WelcomeScreen extends StatelessWidget {
                             '4.9',
                             style: AppTextStyles.statNumber,
                           ),
-                          SizedBox(width: 3),
+                          SizedBox(width: AppDimensions.p2),
                           Icon(
                             Icons.star_rounded,
                             size: AppDimensions.iconSm,
@@ -299,12 +312,12 @@ class WelcomeScreen extends StatelessWidget {
                   ],
                 ),
 
-                const SizedBox(height: AppDimensions.p20),
+                const SizedBox(height: AppDimensions.p14),
 
                 // Primary Gradient Button "Bắt đầu ngay ->"
                 _buildStartButton(context),
 
-                const SizedBox(height: AppDimensions.p14),
+                const SizedBox(height: AppDimensions.p10),
 
                 // Footer "Đã có tài khoản? Đăng nhập"
                 _buildFooterLogin(context),
@@ -324,8 +337,8 @@ class WelcomeScreen extends StatelessWidget {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(
-          vertical: AppDimensions.p12,
-          horizontal: AppDimensions.p6,
+          vertical: AppDimensions.p8,
+          horizontal: AppDimensions.p4,
         ),
         decoration: BoxDecoration(
           color: AppColors.darkStatBox,
@@ -338,7 +351,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           children: [
             topWidget,
-            const SizedBox(height: AppDimensions.p4),
+            const SizedBox(height: AppDimensions.p2),
             Text(
               label,
               style: AppTextStyles.statLabel,
@@ -380,8 +393,8 @@ class WelcomeScreen extends StatelessWidget {
                 SizedBox(width: AppDimensions.p8),
                 Icon(
                   Icons.arrow_forward_rounded,
-                  color: Colors.white,
-                  size: 20,
+                  color: AppColors.textWhite,
+                  size: AppDimensions.iconLg,
                 ),
               ],
             ),
@@ -401,14 +414,17 @@ class WelcomeScreen extends StatelessWidget {
           context.go('/explore');
         },
         child: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+          padding: EdgeInsets.symmetric(
+            vertical: AppDimensions.p4,
+            horizontal: AppDimensions.p12,
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text(
-                'Chưa muốn đăng nhập? ',
-                style: AppTextStyles.linkPrefix,
-              ),
+              // Text(
+              //   'Chưa muốn đăng nhập? ',
+              //   style: AppTextStyles.linkPrefix,
+              // ),
               Text(
                 'Bỏ qua & Khám phá ngay',
                 style: AppTextStyles.linkText,
@@ -427,7 +443,7 @@ class WelcomeScreen extends StatelessWidget {
       height: AppDimensions.homeIndicatorHeight,
       decoration: BoxDecoration(
         color: AppColors.textWhiteHint,
-        borderRadius: BorderRadius.circular(2.5),
+        borderRadius: BorderRadius.circular(AppDimensions.p2),
       ),
     );
   }

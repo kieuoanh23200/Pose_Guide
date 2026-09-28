@@ -6,10 +6,8 @@ import 'core/di/injection_container.dart' as di;
 import 'core/routes/app_router.dart';
 
 void main() async {
-  print('==== [DEBUG] 1. main() started ====');
   // 1. Đảm bảo Flutter Binding được khởi tạo ở root isolate zone
   WidgetsFlutterBinding.ensureInitialized();
-  print('==== [DEBUG] 2. WidgetsFlutterBinding initialized ====');
 
   // 2. Bắt lỗi render của Flutter Framework
   FlutterError.onError = (FlutterErrorDetails details) {
@@ -32,11 +30,8 @@ void main() async {
 
   // 5. Khởi tạo Dependency Injection và chạy ứng dụng
   try {
-    print('==== [DEBUG] 3. Starting di.initDependencies() ====');
     await di.initDependencies();
-    print('==== [DEBUG] 4. di.initDependencies() finished, calling runApp() ====');
     runApp(const PoseGuideApp());
-    print('==== [DEBUG] 5. runApp() called ====');
   } catch (e, stackTrace) {
     debugPrint('Fatal initDependencies error: $e\n$stackTrace');
     runApp(InitializationErrorApp(error: e.toString()));
