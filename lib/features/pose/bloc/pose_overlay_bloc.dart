@@ -1,5 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../domain/entities/pose_landmark_point.dart';
 import '../domain/repositories/pose_repository.dart';
+import '../domain/services/pose_skeleton_detector_service.dart';
 import 'pose_overlay_event.dart';
 import 'pose_overlay_state.dart';
 
@@ -11,6 +13,7 @@ class PoseOverlayBloc extends Bloc<PoseOverlayEvent, PoseOverlayState> {
     on<PoseSelected>(_onSelectPose);
     on<PoseOpacityChanged>(_onChangeOpacity);
     on<PoseOverlayVisibilityToggled>(_onToggleVisibility);
+    on<PoseSkeletonModeToggled>(_onToggleSkeletonMode);
   }
 
   Future<void> _onLoadPoses(
@@ -20,10 +23,19 @@ class PoseOverlayBloc extends Bloc<PoseOverlayEvent, PoseOverlayState> {
     emit(state.copyWith(status: PoseOverlayStatus.loading));
     try {
       final poses = await repository.getPosesByCategory(event.category);
+      final firstPose = poses.isNotEmpty ? poses.first : null;
+      List<PoseLandmarkPoint>? landmarks;
+
+      if (firstPose != null) {
+        landmarks = await PoseSkeletonDetectorService.instance
+            .detectSkeletonFromUrl(firstPose.thumbnailUrl);
+      }// AI quét ra 33 điểm
+
       emit(state.copyWith(
         status: PoseOverlayStatus.success,
         availablePoses: poses,
-        selectedPose: poses.isNotEmpty ? poses.first : null,
+        selectedPose: firstPose,
+        currentLandmarks: landmarks,
         activeCategory: event.category,
       ));
     } catch (e) {
@@ -34,11 +46,18 @@ class PoseOverlayBloc extends Bloc<PoseOverlayEvent, PoseOverlayState> {
     }
   }
 
-  void _onSelectPose(
+  Future<void> _onSelectPose(
     PoseSelected event,
     Emitter<PoseOverlayState> emit,
-  ) {
+  ) async {
     emit(state.copyWith(selectedPose: event.pose));
+    try {
+      final landmarks = await PoseSkeletonDetectorService.instance
+          .detectSkeletonFromUrl(event.pose.thumbnailUrl);
+      emit(state.copyWith(currentLandmarks: landmarks));
+    } catch (_) {
+      // Giữ trạng thái fallback nếu có lỗi mạng
+    }
   }
 
   void _onChangeOpacity(
@@ -53,5 +72,12 @@ class PoseOverlayBloc extends Bloc<PoseOverlayEvent, PoseOverlayState> {
     Emitter<PoseOverlayState> emit,
   ) {
     emit(state.copyWith(isVisible: !state.isVisible));
+  }
+
+  void _onToggleSkeletonMode(
+    PoseSkeletonModeToggled event,
+    Emitter<PoseOverlayState> emit,
+  ) {
+    emit(state.copyWith(isSkeletonMode: !state.isSkeletonMode));
   }
 }

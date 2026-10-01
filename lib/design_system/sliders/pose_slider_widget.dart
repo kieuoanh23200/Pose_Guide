@@ -22,10 +22,10 @@ class PoseSliderWidget extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           decoration: BoxDecoration(
-            color: Colors.black.withOpacity(0.35),
+            color: Colors.black.withValues(alpha: 0.35),
             borderRadius: BorderRadius.circular(24.0),
             border: Border.all(
-              color: Colors.white.withOpacity(0.2),
+              color: Colors.white.withValues(alpha: 0.2),
               width: 1.0,
             ),
           ),
@@ -46,7 +46,7 @@ class PoseSliderWidget extends StatelessWidget {
                     inactiveTrackColor: Colors.white30,
                     thumbColor: Colors.amberAccent,
                     thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8.0),
-                    overlayColor: Colors.amberAccent.withOpacity(0.2),
+                    overlayColor: Colors.amberAccent.withValues(alpha: 0.2),
                   ),
                   child: Slider(
                     value: value,

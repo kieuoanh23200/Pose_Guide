@@ -30,6 +30,10 @@ dependencies:
   # Local Storage & Native Integration
   shared_preferences: ^2.2.2
   pigeon: ^17.0.0
+  gal: ^2.3.0
+  share_plus: ^9.0.0
+  path_provider: ^2.1.2
+  google_mlkit_pose_detection: ^0.15.0
 
 dev_dependencies:
   flutter_test:

@@ -78,4 +78,42 @@ class AppDimensions {
   static const double gridCrossAxisSpacing = 12.0;
   static const double gridMainAxisSpacing = 14.0;
   static const double gridChildAspectRatio = 0.69;
+
+  // ---------------------------------------------------------------------------
+  // 6. Camera UI Dimensions
+  // ---------------------------------------------------------------------------
+  static const double focusRingSize = 72.0;
+  static const double cameraTopBarHeight = 56.0;
+  static const double shutterButtonSize = 72.0;
+  static const double shutterInnerSize = 54.0;
+
+  // ---------------------------------------------------------------------------
+  // 7. Pose Library Dimensions
+  // ---------------------------------------------------------------------------
+  /// Chiều cao tip card cuộn ngang
+  static const double tipCardHeight = 148.0;
+
+  /// Chiều rộng tip card cuộn ngang
+  static const double tipCardWidth = 180.0;
+
+  /// Chiều cao badge (HOT / MỚI / GỢI Ý)
+  static const double poseBadgeHeight = 20.0;
+
+  /// Chiều cao thumbnail dáng trong detail screen
+  static const double poseDetailImageHeight = 320.0;
+
+  /// Chiều rộng danh mục chip tối thiểu
+  static const double categoryChipMinWidth = 68.0;
+
+  // ---------------------------------------------------------------------------
+  // 8. Ulike Style Pose Guide & PiP Floating Dimensions
+  // ---------------------------------------------------------------------------
+  /// Chiều rộng khung ảnh mẫu mini PiP góc trái
+  static const double pipCardWidth = 92.0;
+  /// Chiều cao khung ảnh mẫu mini PiP góc trái
+  static const double pipCardHeight = 122.0;
+  /// Kích thước nút bấm tròn thanh điều khiển cạnh phải camera
+  static const double sideActionBtnSize = 44.0;
+  /// Khoảng cách giữa các nút cạnh phải camera
+  static const double sideActionSpacing = 16.0;
 }

@@ -195,4 +195,148 @@ class AppTextStyles {
     fontSize: 14,
     fontWeight: FontWeight.w400,
   );
+
+  // ---------------------------------------------------------------------------
+  // 6. Camera Text Styles
+  // ---------------------------------------------------------------------------
+  /// Chữ số đếm ngược hẹn giờ chụp (3..2..1)
+  static const TextStyle timerCountdownText = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 84,
+    fontWeight: FontWeight.w900,
+    color: AppColors.primaryMint,
+    shadows: [
+      Shadow(
+        color: Colors.black54,
+        blurRadius: 16,
+        offset: Offset(0, 4),
+      ),
+    ],
+  );
+
+  /// Nhãn thông số phơi sáng độ sáng (+0.5 EV, -1.0 EV)
+  static const TextStyle exposureValueText = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.bold,
+    color: AppColors.primaryMint,
+  );
+
+  /// Nhãn tỉ lệ khung hình (1:1, 3:4, 9:16, FULL)
+  static const TextStyle cameraRatioText = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w800,
+    color: AppColors.textWhite,
+  );
+
+  // ---------------------------------------------------------------------------
+  // 7. Pose Library Text Styles
+  // ---------------------------------------------------------------------------
+  /// Tiêu đề section trong thư viện ("Dáng Nổi Bật", "Tips Tạo Dáng")
+  static const TextStyle librarySection = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w800,
+    color: AppColors.textDarkPrimary,
+    letterSpacing: -0.3,
+  );
+
+  /// Nhãn danh mục nhỏ trên card ("Cặp đôi", "Du lịch")
+  static const TextStyle poseCategory = TextStyle(
+    fontSize: 11,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary,
+    letterSpacing: 0.2,
+  );
+
+  /// Nhãn độ khó (Dễ / Trung bình / Khó)
+  static const TextStyle difficultyLabel = TextStyle(
+    fontSize: 10.5,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 0.2,
+  );
+
+  /// Tiêu đề tip card
+  static const TextStyle tipCardTitle = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w700,
+    color: AppColors.textDarkPrimary,
+  );
+
+  /// Mô tả tip card
+  static const TextStyle tipCardDescription = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textDarkMuted,
+    height: 1.4,
+  );
+
+  /// Nhãn nhóm tip ("Góc chụp", "Ánh sáng", ...)
+  static const TextStyle tipGroupLabel = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColors.primary,
+    letterSpacing: 0.3,
+  );
+
+  /// Tiêu đề màn hình detail dáng
+  static const TextStyle poseDetailTitle = TextStyle(
+    fontSize: 22,
+    fontWeight: FontWeight.w800,
+    color: AppColors.textDarkPrimary,
+    letterSpacing: -0.4,
+  );
+
+  /// Bước thực hiện dáng (Step text)
+  static const TextStyle poseStepText = TextStyle(
+    fontSize: 13.5,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textDarkBody,
+    height: 1.5,
+  );
+
+  /// Nhãn tiêu đề hàng bộ lọc ("Người chụp", "Ngữ cảnh", "Loại dáng")
+  static const TextStyle filterSectionLabel = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textDarkMuted,
+    letterSpacing: 0.3,
+  );
+
+  // ---------------------------------------------------------------------------
+  // 6. Nhãn Chú Thích & Trường Nhập Liệu (Badges, Inputs & Captions)
+  // ---------------------------------------------------------------------------
+  /// Chữ nhãn badge nhỏ
+  static const TextStyle badgeText = TextStyle(
+    fontSize: 10,
+    fontWeight: FontWeight.w600,
+    color: AppColors.textWhite,
+    letterSpacing: 0.2,
+  );
+
+  /// Chữ nhập liệu trong ô TextField
+  static const TextStyle textFieldText = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: AppColors.textWhite,
+  );
+
+  /// Nhãn tiêu đề ô TextField
+  static const TextStyle textFieldLabel = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w500,
+    color: AppColors.primaryMint,
+  );
+
+  /// Chữ gợi ý mờ ô TextField (Hint)
+  static const TextStyle textFieldHint = TextStyle(
+    fontSize: 13,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textPlaceholder,
+  );
+
+  /// Chữ chú thích nhỏ (Caption)
+  static const TextStyle caption = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: AppColors.textWhiteSecondary,
+  );
 }

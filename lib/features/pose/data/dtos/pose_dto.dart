@@ -14,7 +14,7 @@ class PoseDto {
   @JsonKey(name: 'category')
   final String category;
 
-  @JsonKey(name: 'overlay_asset_path')
+  @JsonKey(name: 'overlay_asset_path', defaultValue: '')
   final String overlayAssetPath;
 
   @JsonKey(name: 'thumbnail_url')
@@ -30,7 +30,7 @@ class PoseDto {
     required this.id,
     required this.title,
     required this.category,
-    required this.overlayAssetPath,
+    this.overlayAssetPath = '',
     required this.thumbnailUrl,
     required this.recommendedAngle,
     required this.description,
@@ -49,7 +49,7 @@ class PoseDto {
       id: id,
       title: title,
       category: category,
-      overlayAssetPath: overlayAssetPath,
+      overlayAssetPath: overlayAssetPath.isNotEmpty ? overlayAssetPath : null,
       thumbnailUrl: thumbnailUrl,
       recommendedAngle: recommendedAngle,
       description: description,
@@ -62,7 +62,7 @@ class PoseDto {
       id: entity.id,
       title: entity.title,
       category: entity.category,
-      overlayAssetPath: entity.overlayAssetPath,
+      overlayAssetPath: entity.overlayAssetPath ?? '',
       thumbnailUrl: entity.thumbnailUrl,
       recommendedAngle: entity.recommendedAngle,
       description: entity.description,

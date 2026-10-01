@@ -28,27 +28,21 @@ class WelcomeScreen extends StatelessWidget {
           // -------------------------------------------------------------------
           Positioned.fill(
             child: Image.asset(
-              'assets/poses/background_start.png',
+              'assets/background_start.png',
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return Image.asset(
-                  'assets/background_start.png',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFF1E2638),
-                            Color(0xFF12141C),
-                            Color(0xFF090A0E),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
+                return Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Color(0xFF1E2638),
+                        Color(0xFF12141C),
+                        Color(0xFF090A0E),
+                      ],
+                    ),
+                  ),
                 );
               },
             ),

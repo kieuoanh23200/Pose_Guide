@@ -35,3 +35,7 @@ class PoseOpacityChanged extends PoseOverlayEvent {
 class PoseOverlayVisibilityToggled extends PoseOverlayEvent {
   const PoseOverlayVisibilityToggled();
 }
+
+class PoseSkeletonModeToggled extends PoseOverlayEvent {
+  const PoseSkeletonModeToggled();
+}

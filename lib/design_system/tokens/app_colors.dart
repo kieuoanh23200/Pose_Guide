@@ -35,6 +35,55 @@ class AppColors {
   static const Color dangerRed = Color(0xFFEF4444);
 
   // ---------------------------------------------------------------------------
+  // 2b. Độ Khó Tư Thế (Difficulty Levels — Pose Library)
+  // ---------------------------------------------------------------------------
+  /// Dễ — xanh lá nhạt
+  static const Color difficultyEasyBg = Color(0x2622C55E);
+  static const Color difficultyEasyBorder = Color(0x5222C55E);
+  static const Color difficultyEasyText = Color(0xFF16A34A);
+
+  /// Trung bình — cam/vàng
+  static const Color difficultyMediumBg = Color(0x26F59E0B);
+  static const Color difficultyMediumBorder = Color(0x52F59E0B);
+  static const Color difficultyMediumText = Color(0xFFD97706);
+
+  /// Khó — đỏ
+  static const Color difficultyHardBg = Color(0x26EF4444);
+  static const Color difficultyHardBorder = Color(0x52EF4444);
+  static const Color difficultyHardText = Color(0xFFDC2626);
+
+  // ---------------------------------------------------------------------------
+  // 2c. Màu Badge & Section Tips (Pose Library)
+  // ---------------------------------------------------------------------------
+  /// Badge HOT — gradient cam-hồng
+  static const LinearGradient hotBadgeGradient = LinearGradient(
+    colors: [Color(0xFFFF6B35), Color(0xFFFF1F6D)],
+  );
+
+  /// Badge MỚI — gradient xanh mint
+  static const LinearGradient newBadgeGradient = LinearGradient(
+    colors: [Color(0xFF00E5BE), Color(0xFF0099CC)],
+  );
+
+  /// Màu active chip bộ lọc Ngữ cảnh (cam ấm)
+  static const Color contextFilterActive = Color(0xFFEA7C3A);
+
+  /// Màu active chip bộ lọc Loại dáng (tím indigo)
+  static const Color poseTypeFilterActive = Color(0xFF6366F1);
+
+  /// Nền tips section (màu sáng nhạt mint)
+  static const Color tipsSectionBackground = Color(0xFFF0FDF9);
+  static const Color tipCardBackground = Color(0xFFFFFFFF);
+  static const Color tipIconBackground = Color(0xFFE6F7F3);
+
+  /// Vòng tròn lấy nét và thanh độ sáng Camera
+  static const Color focusRingBorder = Color(0xFFFFD700);
+  static const Color cameraBarBackground = Color(0x99000000);
+  static const Color cameraControlActive = Color(0xFF00E5BE);
+  static const Color cameraControlInactive = Color(0xFFFFFFFF);
+  static const Color timerOverlayBackground = Color(0x66000000);
+
+  // ---------------------------------------------------------------------------
   // 3. Màu Nền (Backgrounds)
   // ---------------------------------------------------------------------------
   /// Nền tối ứng dụng (Welcome Screen, Camera Screen)
@@ -79,6 +128,22 @@ class AppColors {
   static const Color borderDark12 = Color(0x1FFFFFFF);
   static const Color borderDark15 = Color(0x26FFFFFF);
   static const Color borderDark08 = Color(0x14FFFFFF);
+
+  // ---------------------------------------------------------------------------
+  // 5b. Màu Nét Viền Dáng & Điều Khiển Camera (Pose Contour & PiP Overlay)
+  // ---------------------------------------------------------------------------
+  /// Nét viền silhouette phác thảo trắng tinh khiết
+  static const Color contourWhite = Color(0xFFFFFFFF);
+  /// Hiệu ứng phát sáng neon cho nét viền
+  static const Color contourGlow = Color(0x6600E5BE);
+  /// Viền hộp ảnh mẫu thu nhỏ (PiP)
+  static const Color pipBorder = Color(0x6600E5BE);
+  /// Nền mờ kính cho hộp ảnh mẫu thu nhỏ (PiP)
+  static const Color pipBackground = Color(0xD9101622);
+  /// Nền nút tròn điều khiển cạnh phải camera
+  static const Color sideBtnBg = Color(0x991E293B);
+  /// Viền nút tròn cạnh phải camera
+  static const Color sideBtnBorder = Color(0x33FFFFFF);
 
   // ---------------------------------------------------------------------------
   // 6. Dải Màu Tuyến Tính (Gradients)
